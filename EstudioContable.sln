@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstudioContable.Negocio", "EstudioContable.Negocio\EstudioContable.Negocio.csproj", "{1E4A1282-6F7A-4A00-9E73-F70C84D62ED1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstudioContable.Datos", "EstudioContable.AccesoDatos\EstudioContable.Datos.csproj", "{2A55E826-987E-4821-B853-B94E55CA8433}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstudioContable.AccesoDatos", "EstudioContable.AccesoDatos\EstudioContable.AccesoDatos.csproj", "{2A55E826-987E-4821-B853-B94E55CA8433}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstudioContable.Entidades", "EstudioContable.Entidades\EstudioContable.Entidades.csproj", "{CDD2DBF4-6EF5-4B65-A14B-A839180C1974}"
 EndProject

@@ -1,4 +1,5 @@
 ﻿using EstudioContable.Entidades;
+using EstudioContable.AccesoDatos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,39 +12,36 @@ namespace EstudioContable.Negocio
     public class EmpleadoNegocio
     {
         private EmpleadoDatos _empeladoDatos;
-        private EmpresaDatos _empresaDatos;
 
         public EmpleadoNegocio()
         {
             _empeladoDatos = new EmpleadoDatos();
-            _empresaDatos = new EmpresaDatos();
 
         }
 
         public List<Empleado> GetLista()
         {
-            List<Empleado> list = _empleadoDatos.Traer(100);
+            List<Empleado> list = _empeladoDatos.TraerTodos();
 
             return list;
         }
 
-        public Empresa GetByLegajo( int legajo)
+        public Empleado GetByLegajo( int legajo)
         {
             foreach ( var item in GetLista())
             {
-                if (item.Legajo = legajo)
+                if (item.Id == legajo)
                     return item;
             }
+            return null;
         }
 
 
         public void AltaEmpleado(int idEmpresa, int idCategoria, DateTime fechaNacimiento, DateTime fechaAlta, bool activo, int id, string nombre, string apellido, string direccion, long telefono, string mail)
         {
-            Empleado empelado = new Empleado();
+            Empleado empelado = new Empleado( idEmpresa,  idCategoria,  fechaNacimiento,  fechaAlta,  activo,  id,  nombre,  apellido,  direccion,  telefono,  mail);
 
-
-
-            _empeladoDatos.Insertar(empleado)
+            _empeladoDatos.Insertar(empelado);
 
 
         }

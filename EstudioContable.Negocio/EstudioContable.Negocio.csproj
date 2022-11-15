@@ -41,13 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriaNegocio.cs" />
     <Compile Include="EmpleadoNegocio.cs" />
+    <Compile Include="EmpresaNegocio.cs" />
+    <Compile Include="LiquidacionNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EstudioContable.AccesoDatos\EstudioContable.Datos.csproj">
+    <ProjectReference Include="..\EstudioContable.AccesoDatos\EstudioContable.AccesoDatos.csproj">
       <Project>{2a55e826-987e-4821-b853-b94e55ca8433}</Project>
-      <Name>EstudioContable.Datos</Name>
+      <Name>EstudioContable.AccesoDatos</Name>
     </ProjectReference>
     <ProjectReference Include="..\EstudioContable.Entidades\EstudioContable.Entidades.csproj">
       <Project>{cdd2dbf4-6ef5-4b65-a14b-a839180c1974}</Project>

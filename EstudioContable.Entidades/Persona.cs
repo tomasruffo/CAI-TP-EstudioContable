@@ -26,7 +26,7 @@ namespace EstudioContable.Entidades
            _mail = mail;   
         }
 
-        public int Id { get => _id; set => _id = value; }
+        public int Id { get => _id;}
         public string Nombre { get => _nombre; set => _nombre = value; }
         public string Apellido { get => _apellido; set => _apellido = value; }
         public string Direccion { get => _direccion; set => _direccion = value; }
