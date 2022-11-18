@@ -26,7 +26,7 @@ namespace EstudioContable.AccesoDatos
             List<Categoria> lst = JsonConvert.DeserializeObject<List<Categoria>>(json); // deserializacion
             return lst;
         }
-;
+
     
         public TransaccionResultado Insertar(Categoria categoria)
         {

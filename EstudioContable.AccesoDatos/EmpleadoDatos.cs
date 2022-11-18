@@ -26,7 +26,7 @@ namespace EstudioContable.AccesoDatos
             List<Empleado> lst = JsonConvert.DeserializeObject<List<Empleado>>(json); // deserializacion
             return lst;
         }
-;
+
     
         public TransaccionResultado Insertar(Empleado empleado)
         {
@@ -43,7 +43,7 @@ namespace EstudioContable.AccesoDatos
         {
             NameValueCollection n = new NameValueCollection();
             n.Add("idCategoria", empleado.IdCategoria.ToString());
-            n.Add("idEmpresa", empleado.IdEmpresa.ToString();
+            n.Add("idEmpresa", empleado.IdEmpresa.ToString());
             n.Add("Apellido", empleado.Apellido);
             n.Add("Cuil", empleado.Cuil.ToString());
             n.Add("Nombre", empleado.Nombre);

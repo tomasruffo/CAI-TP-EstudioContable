@@ -26,7 +26,7 @@ namespace EstudioContable.AccesoDatos
             List<Liquidacion> lst = JsonConvert.DeserializeObject<List<Liquidacion>>(json); // deserializacion
             return lst;
         }
-;
+
     
         public TransaccionResultado Insertar(Liquidacion liquidacion)
         {
@@ -43,7 +43,7 @@ namespace EstudioContable.AccesoDatos
         {
             NameValueCollection n = new NameValueCollection();
             n.Add("idEmpleado", liquidacion.IdEmpleado.ToString());
-            n.Add("Periodo", liquidacion.Periodo.ToString();
+            n.Add("Periodo", liquidacion.Periodo.ToString());
             n.Add("CodigoTransferencia", liquidacion.CodigoTransferencia.ToString());
             n.Add("Bruto", liquidacion.Bruto.ToString());
             n.Add("Descuentos", liquidacion.Descuentos.ToString());

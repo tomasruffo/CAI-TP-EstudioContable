@@ -26,7 +26,7 @@ namespace EstudioContable.AccesoDatos
             List<Empresa> lst = JsonConvert.DeserializeObject<List<Empresa>>(json); // deserializacion
             return lst;
         }
-;
+
     
         public TransaccionResultado Insertar(Empresa empresa)
         {
@@ -46,7 +46,7 @@ namespace EstudioContable.AccesoDatos
         {
             NameValueCollection n = new NameValueCollection();
             n.Add("RazonSocial", empresa.RazonSocial.ToString());
-            n.Add("Cuit", empresa.Cuit.ToString();
+            n.Add("Cuit", empresa.Cuit.ToString());
             n.Add("Domicilio", empresa.Domicilio);
             n.Add("FechaAlta", empresa.FechaAlta.ToString());
             n.Add("Usuario", empresa.Id.ToString()); // le pongo id poruqe no se que poner en usuario
