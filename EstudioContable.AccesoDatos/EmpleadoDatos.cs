@@ -45,8 +45,8 @@ namespace EstudioContable.AccesoDatos
             n.Add("idCategoria", empleado.IdCategoria.ToString());
             n.Add("idEmpresa", empleado.IdEmpresa.ToString();
             n.Add("Apellido", empleado.Apellido);
-            n.Add("Cuil", empleado.Cuil.ToString();
-            n.Add("Nombre", empleado.Nombre;
+            n.Add("Cuil", empleado.Cuil.ToString());
+            n.Add("Nombre", empleado.Nombre);
             n.Add("Apellido", empleado.Apellido);
             n.Add("FechaNacimiento", empleado.FechaNacimiento.ToString("yyyy-MM-dd"));
             n.Add("FechaAlta", empleado.FechaAlta.ToString("yyyy-MM-dd"));

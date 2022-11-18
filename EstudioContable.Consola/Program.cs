@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,7 +22,7 @@ namespace EstudioContable.Consolas
                 EmpleadoNegocio empleados = new EmpleadoNegocio();
                 EmpresaNegocio empresas = new EmpresaNegocio();
                 LiquidacionNegocio liquidaciones = new LiquidacionNegocio();
-                CategoriaNegocio categorias = new CategoriasNegocio();
+                CategoriaNegocio categorias = new CategoriaNegocio();
 
 
                 bool consolaActiva = true;
@@ -29,7 +30,7 @@ namespace EstudioContable.Consolas
                 {
                     DesplegarOpcionesMenu();
                     string opcionElegida = Console.ReadLine();
-                    Switch (opcionElegida)
+                    switch (opcionElegida)
                     {
                         case "1":
                             TraerEmpleados(empleados);
@@ -38,16 +39,22 @@ namespace EstudioContable.Consolas
                             AltaEmpleado(empleados);
                             break;
                         case "3":
+                            TraerEmpresas(empresas);
                             break;
                         case "4":
+                            AltaEmpresa(empresas);
                             break;
                         case "5":
+                            TraerLiquidaciones(liquidaciones);
                             break;
                         case "6":
+                            AltaLiquidacion(liquidaciones);
                             break;
                         case "7":
+                            TraerCategorias(categorias);
                             break;
                         case "8":
+                            AltaCategoria(categorias);
                             break;
                         case "9":
                             break;
@@ -61,11 +68,12 @@ namespace EstudioContable.Consolas
             }
             catch
             {
+                throw  new Exception("Chequear los tipos de datos ingresados."); 
 
             }
                  
 
-           
+ 
 
             static void TraerEmpleados(EmpleadoNegocio empleadoNegocio)
             {
@@ -77,7 +85,7 @@ namespace EstudioContable.Consolas
                     Console.WriteLine("Ingrese un numero de legajo valido ");
                     return;
                 }
-                Empleado e1 = empleadoNegocio.GetByLegajo(legajo.toInt);
+                Empleado e1 = empleadoNegocio.GetByLegajo(legajo);
                 Console.WriteLine("Se encontro el siguiente empleado:");
                 Console.WriteLine(e1.ToString());
 
@@ -93,6 +101,8 @@ namespace EstudioContable.Consolas
                 string idEmpresa = Console.ReadLine();
                 Console.WriteLine("Ingrese el id Categoria: ");
                 string idCategoria = Console.ReadLine();
+                Console.WriteLine("Ingrese el cuil: ");
+                string cuil = Console.ReadLine();
                 Console.WriteLine("Ingrese el id fecha nacimiento: ");
                 string fechaNacimiento = Console.ReadLine();
                 Console.WriteLine("Ingrese el nombre: ");
@@ -105,11 +115,146 @@ namespace EstudioContable.Consolas
                 string telefono = Console.ReadLine();
                 Console.WriteLine("Ingrese el mail: ");
                 string mail = Console.ReadLine();
+                try
+                {
+                    empleadoNegocio.AltaEmpleado(int.Parse(idEmpresa), int.Parse(idCategoria), int.Parse(cuil), DateTime.Parse(fechaNacimiento), int.Parse(id), nombre, apellido, direccion, long.Parse(telefono), mail);
 
-                Empleado e1 = empleadoNegocio.AltaEmpleado(idEmpresa, idCategoria, fechaNacimiento, id,  nombre, apellido, direccion, telefono, mail);
+                }
+                catch
+                {
+                    throw new Exception(" Inputs invalidos");
+                }
 
 
             }
+            static void TraerEmpresas(EmpresaNegocio empresaNegocio)
+            {
+                Console.WriteLine("Ingrese ID del empelado: ");
+                int id;
+                string id_str = Console.ReadLine();
+                if (!int.TryParse(id_str, out id))
+                {
+                    Console.WriteLine("Ingrese un id valido ");
+                    return;
+                }
+                Empresa e1 = empresaNegocio.GetByIdEmpleado(id);
+                Console.WriteLine("El empelado corresponde a la empresa: ");
+                Console.WriteLine(e1.ToString());
+
+            }
+
+            static void AltaEmpresa(EmpresaNegocio empresaNegocio)
+            {
+                Console.WriteLine("Ingrese el Id : ");
+                string id = Console.ReadLine();
+                Console.WriteLine("Ingrese la razon social: ");
+                string razonSocial = Console.ReadLine();
+                Console.WriteLine("Ingrese el cuit: ");
+                string cuit = Console.ReadLine();
+                Console.WriteLine("Ingrese el domicilio: ");
+                string domicilio = Console.ReadLine();
+
+                try
+                {
+                    empresaNegocio.AltaEmpresa(int.Parse(id), razonSocial, long.Parse(cuit), domicilio);
+
+                }
+                catch
+                {
+                    throw new Exception(" Inputs invalidos");
+                }
+
+            }
+
+            static void TraerCategorias(CategoriaNegocio categoriaNegocio)
+            {
+                Console.WriteLine("Ingrese ID del empleado: ");
+                int id;
+                string id_str = Console.ReadLine();
+                if (!int.TryParse(id_str, out id))
+                {
+                    Console.WriteLine("Ingrese un id valido ");
+                    return;
+                }
+                Categoria e1 = categoriaNegocio.GetByIdEmpleado(id);
+                Console.WriteLine("Pertenece a la siguente cateogria:");
+                Console.WriteLine(e1.ToString());
+
+
+
+            }
+
+
+            static void AltaCategoria(CategoriaNegocio categoriaNegocio)
+            {
+                Console.WriteLine("Ingrese el Id : ");
+                string id = Console.ReadLine();
+                Console.WriteLine("Ingrese el nombre de la categoria: ");
+                string nombre = Console.ReadLine();
+                Console.WriteLine("Ingrese el convenio: ");
+                string convenio = Console.ReadLine();
+                Console.WriteLine("Ingrese el sueldo basico: ");
+                string sueldoBasico = Console.ReadLine();
+                try
+                {
+                    categoriaNegocio.AltaCategoria(int.Parse(id), nombre, convenio, double.Parse(sueldoBasico));
+
+                }
+                catch
+                {
+                    throw new Exception(" Inputs invalidos");
+                }
+
+            }
+
+
+            static void TraerLiquidaciones(LiquidacionNegocio liquidacionNegocio)
+            {
+                Console.WriteLine("Ingrese ID empleado: ");
+                int id;
+                string id_str = Console.ReadLine();
+                if (!int.TryParse(id_str, out id))
+                {
+                    Console.WriteLine("Ingrese un id valido ");
+                    return;
+                }
+                List<Liquidacion> listaLiquidaciones = liquidacionNegocio.GetById(id);
+                Console.WriteLine("El id ingresdo posee las sigueintes liquidaciones:");
+                foreach (var item in listaLiquidaciones)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+
+            }
+
+
+            static void AltaLiquidacion(LiquidacionNegocio liquidacionNegocio)
+            {
+                Console.WriteLine("Ingrese el id de la liquidacion : ");
+                string id = Console.ReadLine();
+                Console.WriteLine("Ingrese el idEmpleado : ");
+                string idEmpleado = Console.ReadLine();
+                Console.WriteLine("Ingrese el codigo de transferencia: ");
+                string codigoTransferencia = Console.ReadLine();
+                Console.WriteLine("Ingrese el periodo: ");
+                string periodo = Console.ReadLine();
+                Console.WriteLine("Ingrese el bruto: ");
+                string bruto = Console.ReadLine();
+                Console.WriteLine("Ingrese el descuento : ");
+                string descuentos = Console.ReadLine();
+                try
+                {
+                    liquidacionNegocio.AltaLiquidacion(int.Parse(id), int.Parse(idEmpleado), int.Parse(codigoTransferencia), int.Parse(periodo), double.Parse(bruto), double.Parse(descuentos));
+
+                }
+                catch
+                {
+                    throw new Exception(" Inputs invalidos");    
+                }
+
+            }
+
+
 
 
             static void DesplegarOpcionesMenu()

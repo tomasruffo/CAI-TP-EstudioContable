@@ -45,7 +45,6 @@
     <Compile Include="Liquidacion.cs" />
     <Compile Include="TransaccionResultado.cs" />
     <Compile Include="Empleado.cs" />
-    <Compile Include="Persona.cs" />
     <Compile Include="Empresa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

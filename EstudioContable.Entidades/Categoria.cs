@@ -34,7 +34,7 @@ namespace EstudioContable.Entidades
 
         public override string ToString()
         {
-            return this.Id + "-" + this.Nombre + " " + this.Convenio + " "+ this.SueldoBasico;
+            return this.Id + "- La categoria es " + this.Nombre + " pertenece al convenio " + this.Convenio + " y el sueldo basico es "+ this.SueldoBasico;
 
         }
 

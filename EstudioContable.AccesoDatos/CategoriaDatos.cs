@@ -43,7 +43,7 @@ namespace EstudioContable.AccesoDatos
         {
             NameValueCollection n = new NameValueCollection();
             n.Add("Nombre", categoria.Nombre.ToString());
-            n.Add("Convenio", categoria.Convenio;
+            n.Add("Convenio", categoria.Convenio);
             n.Add("SueldoBasico", categoria.SueldoBasico.ToString());
             n.Add("id", categoria.Id.ToString());
          

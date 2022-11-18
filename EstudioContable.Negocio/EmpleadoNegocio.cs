@@ -37,9 +37,9 @@ namespace EstudioContable.Negocio
         }
 
 
-        public void AltaEmpleado(int idEmpresa, int idCategoria, DateTime fechaNacimiento, DateTime fechaAlta, bool activo, int id, string nombre, string apellido, string direccion, long telefono, string mail)
+        public void AltaEmpleado(int idEmpresa, int idCategoria,long cuil ,DateTime fechaNacimiento , int id, string nombre, string apellido, string direccion, long telefono, string mail)
         {
-            Empleado empelado = new Empleado( idEmpresa,  idCategoria,  fechaNacimiento,  fechaAlta,  activo,  id,  nombre,  apellido,  direccion,  telefono,  mail);
+            Empleado empelado = new Empleado( idEmpresa,  idCategoria,cuil,  fechaNacimiento,   id,  nombre,  apellido,  direccion,  telefono,  mail);
 
             _empeladoDatos.Insertar(empelado);
 

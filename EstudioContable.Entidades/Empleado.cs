@@ -44,11 +44,11 @@ namespace EstudioContable.Entidades
         
 
         public int IdEmpresa { get => _idEmpresa; set => _idEmpresa = value; }
-        public string IdCategoria { get => _idCategoria; set => _idCategoria = value; }
-        public string Cuil { get => _cuil; set => _cuil = value; }
-        public long FechaNacimiento { get => _fechaNacimiento; set => _fechaNacimiento = value; }
-        public string FechaAlta { get => _fechaAlta; }
-        public DateTime Activo { get => _activo; set => _activo = value; }
+        public int IdCategoria { get => _idCategoria; set => _idCategoria = value; }
+        public long Cuil { get => _cuil; set => _cuil = value; }
+        public DateTime FechaNacimiento { get => _fechaNacimiento; set => _fechaNacimiento = value; }
+        public DateTime FechaAlta { get => _fechaAlta; }
+        public bool Activo { get => _activo; set => _activo = value; }
         public int Id { get => _id; }
         public string Nombre { get => _nombre; set => _nombre = value; }
         public string Apellido { get => _apellido; set => _apellido = value; }
