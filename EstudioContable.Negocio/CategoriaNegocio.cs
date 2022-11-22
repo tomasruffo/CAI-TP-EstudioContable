@@ -15,7 +15,7 @@ namespace EstudioContable.Negocio
         public CategoriaNegocio()
         {
             _categoriaDatos = new CategoriaDatos();
-
+            _empleadoDatos = new EmpleadoDatos();
         }
 
         public List<Categoria> GetLista()

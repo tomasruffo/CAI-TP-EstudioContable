@@ -16,6 +16,7 @@ namespace EstudioContable.Negocio
         public EmpresaNegocio()
         {
             _empresaDatos = new EmpresaDatos();
+            _empleadoDatos = new EmpleadoDatos();
 
         }
 

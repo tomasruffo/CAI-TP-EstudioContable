@@ -13,82 +13,85 @@ namespace EstudioContable.Consolas
     public class Program
     {
         static void Main(string[] args)
-        {      
+        {
+
+
            
-            try
+
+            EmpleadoNegocio empleados = new EmpleadoNegocio();
+            EmpresaNegocio empresas = new EmpresaNegocio();
+            LiquidacionNegocio liquidaciones = new LiquidacionNegocio();
+            CategoriaNegocio categorias = new CategoriaNegocio();
+
+
+            bool consolaActiva = true;
+            while (consolaActiva)
+            {
+                DesplegarOpcionesMenu();
+                string opcionElegida = Console.ReadLine();
                 
-            {
-
-                EmpleadoNegocio empleados = new EmpleadoNegocio();
-                EmpresaNegocio empresas = new EmpresaNegocio();
-                LiquidacionNegocio liquidaciones = new LiquidacionNegocio();
-                CategoriaNegocio categorias = new CategoriaNegocio();
-
-
-                bool consolaActiva = true;
-                while (consolaActiva)
+                switch (opcionElegida)
                 {
-                    DesplegarOpcionesMenu();
-                    string opcionElegida = Console.ReadLine();
-                    switch (opcionElegida)
-                    {
-                        case "1":
-                            TraerEmpleados(empleados);
-                            break;
-                        case "2":
-                            AltaEmpleado(empleados);
-                            break;
-                        case "3":
-                            TraerEmpresas(empresas);
-                            break;
-                        case "4":
-                            AltaEmpresa(empresas);
-                            break;
-                        case "5":
-                            TraerLiquidaciones(liquidaciones);
-                            break;
-                        case "6":
-                            AltaLiquidacion(liquidaciones);
-                            break;
-                        case "7":
-                            TraerCategorias(categorias);
-                            break;
-                        case "8":
-                            AltaCategoria(categorias);
-                            break;
-                        case "9":
-                            break;
-                        case "10":
-                            break;
-                        case "X":
-                            break;
-                    }
+                    case "1":
+                        TraerEmpleados(empleados);
+                        break;
+                    case "2":
+                        AltaEmpleado(empleados);
+                        break;
+                    case "3":
+                        TraerEmpresas(empresas);
+                        break;
+                    case "4":
+                        AltaEmpresa(empresas);
+                        break;
+                    case "5":
+                        TraerLiquidaciones(liquidaciones);
+                        break;
+                    case "6":
+                        AltaLiquidacion(liquidaciones);
+                        break;
+                    case "7":
+                        TraerCategorias(categorias);
+                        break;
+                    case "8":
+                        AltaCategoria(categorias);
+                        break;
+                    case "9":
+                        break;
+                    case "10":
+                        break;
+                    case "X":
+                        break;
                 }
-
+               
             }
-            catch
-            {
-                throw  new Exception("Chequear los tipos de datos ingresados."); 
-
-            }
-         }        
+           
+        }
 
         static void TraerEmpleados(EmpleadoNegocio empleadoNegocio)
-        {
+        {   
             Console.WriteLine("Ingrese Legajo del empleado: ");
             int legajo;
-            string legajo_str= Console.ReadLine();
+            string legajo_str = Console.ReadLine();
             if (!int.TryParse(legajo_str, out legajo))
             {
                 Console.WriteLine("Ingrese un numero de legajo valido ");
-                return;
+             
+                try
+                {
+                    Empleado e1 = empleadoNegocio.GetByLegajo(legajo);
+                    Console.WriteLine("Se encontro el siguiente empleado:");
+                    Console.WriteLine(e1.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                
+
+
+
             }
-            Empleado e1 = empleadoNegocio.GetByLegajo(legajo);
-            Console.WriteLine("Se encontro el siguiente empleado:");
-            Console.WriteLine(e1.ToString());
-
-
-
         }
 
         static void AltaEmpleado(EmpleadoNegocio empleadoNegocio)
@@ -135,9 +138,17 @@ namespace EstudioContable.Consolas
                 Console.WriteLine("Ingrese un id valido ");
                 return;
             }
-            Empresa e1 = empresaNegocio.GetByIdEmpleado(id);
-            Console.WriteLine("El empelado corresponde a la empresa: ");
-            Console.WriteLine(e1.ToString());
+            try
+            {
+                Empresa e1 = empresaNegocio.GetByIdEmpleado(id);
+                Console.WriteLine("El empelado corresponde a la empresa: ");
+                Console.WriteLine(e1.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        
 
         }
 
@@ -154,7 +165,7 @@ namespace EstudioContable.Consolas
 
             try
             {
-                    empresaNegocio.AltaEmpresa(int.Parse(id), razonSocial, long.Parse(cuit), domicilio);
+                empresaNegocio.AltaEmpresa(int.Parse(id), razonSocial, long.Parse(cuit), domicilio);
 
             }
             catch
@@ -247,7 +258,7 @@ namespace EstudioContable.Consolas
             }
             catch
             {
-                throw new Exception(" Inputs invalidos");    
+                throw new Exception(" Inputs invalidos");
             }
 
         }
@@ -268,5 +279,6 @@ namespace EstudioContable.Consolas
 
         }
 
+        
     }
 }
