@@ -70,9 +70,13 @@ namespace EstudioContable.Negocio
         {
             Categoria categoria = new Categoria(id, nombre, convenio, sueldoBasico);
 
-            _categoriaDatos.Insertar(categoria);
+            
 
+            TransaccionResultado transaction = _categoriaDatos.Insertar(categoria);
+            if (!transaction.IsOk)
+                throw new Exception(transaction.Error);
 
+            Console.WriteLine("Categoria agregada correctamente");
         }
 
 

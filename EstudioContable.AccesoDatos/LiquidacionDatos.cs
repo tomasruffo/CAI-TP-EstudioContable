@@ -16,7 +16,7 @@ namespace EstudioContable.AccesoDatos
     {
         public List<Liquidacion> TraerTodos()
         {
-            string json_liquidaciones = WebHelper.Get("/EstudioContable/Liquidacion");
+            string json_liquidaciones = WebHelper.Get("/EstudioContable/Liquidaciones");
             List<Liquidacion> resultado = MapList(json_liquidaciones);
             return resultado;
         }
@@ -32,7 +32,7 @@ namespace EstudioContable.AccesoDatos
         {
             NameValueCollection obj = ReverseMap(liquidacion); //serializacion -> json
 
-            string json = WebHelper.Post("/EstudioContable/liquidacion", obj);
+            string json = WebHelper.Post("/EstudioContable/liquidaciones", obj);
 
             TransaccionResultado lst = JsonConvert.DeserializeObject<TransaccionResultado>(json);
 

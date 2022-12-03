@@ -25,6 +25,23 @@ namespace EstudioContable.Negocio
 
             return list;
         }
+        
+
+        public List<Empleado> ReporteEmpleados(int idEmpresa)
+        {
+            List<Empleado> empleadosDeLaEmpresa= new List<Empleado>();
+
+            List<Empleado> empleados = _empeladoDatos.TraerTodos();
+            foreach( Empleado empleado in empleados)
+            {
+                if (empleado.IdEmpresa == idEmpresa)
+                {
+                    empleadosDeLaEmpresa.Add(empleado);
+                }
+
+            }
+            return empleadosDeLaEmpresa;
+        }
 
         public Empleado GetByLegajo( int legajo)
         {
@@ -39,10 +56,14 @@ namespace EstudioContable.Negocio
 
         public void AltaEmpleado(int idEmpresa, int idCategoria,long cuil ,DateTime fechaNacimiento , int id, string nombre, string apellido, string direccion, long telefono, string mail)
         {
+   
             Empleado empelado = new Empleado( idEmpresa,  idCategoria,cuil,  fechaNacimiento,   id,  nombre,  apellido,  direccion,  telefono,  mail);
 
-            _empeladoDatos.Insertar(empelado);
+            TransaccionResultado transaction =  _empeladoDatos.Insertar(empelado);
+            if (!transaction.IsOk)
+                throw new Exception(transaction.Error);
 
+            Console.WriteLine("Empleado agregado correctamente");
 
         }
 

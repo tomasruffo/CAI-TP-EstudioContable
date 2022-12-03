@@ -85,7 +85,12 @@ namespace EstudioContable.Negocio
         {
             Empresa empresa = new Empresa(id, razonSocial, cuit, domicilio);
 
-            _empresaDatos.Insertar(empresa);
+            
+            TransaccionResultado transaction = _empresaDatos.Insertar(empresa);
+            if (!transaction.IsOk)
+                throw new Exception(transaction.Error);
+
+            Console.WriteLine("Empresa agregada correctamente");
 
 
         }
